@@ -2,16 +2,41 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 .navigation {
   display: flex;
   margin: 0;
   & li {
     flex: 1;
     & a {
-      color: silver;
+      color: var(--color-silver);
       &.selected {
-        color: purple;
+        color: var(--color-purple);
       }
     }
+  }
+}
+
+
+.page-transition {
+  & .fade-enter {
+    transform: translate(100%);
+    opacity: 0;
+  }
+
+  & .fade-enter.fade-enter-active {
+    transition: opacity 500ms, transform 500ms;
+    transform: translate(0%);
+    opacity: 1;
+  }
+
+  & .fade-exit {
+    opacity: 1;
+  }
+
+  & .fade-exit.fade-exit-active {
+    transition: opacity 500ms, transform 500ms;
+    opacity: 0;
+    transform: translate(-100%);
   }
 }

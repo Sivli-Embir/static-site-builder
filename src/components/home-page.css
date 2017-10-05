@@ -1,4 +1,5 @@
 .home-page {
   font-family: var(--font-text);
   font-size: 22px;
+  background: blue;
 }

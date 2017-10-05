@@ -1,1 +1,54 @@
-body,html{margin:0;padding:0}.navigation{display:-webkit-box;display:-ms-flexbox;display:flex;margin:0}.navigation li{-webkit-box-flex:1;-ms-flex:1;flex:1}.navigation li a{color:silver}.navigation li a.selected{color:purple}.home-page{font-family:Mukta,sans-serif;font-size:22px}
+/* Shared */
+/* Components */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0
+}
+.navigation li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.navigation li a {
+  color: silver;
+}
+.navigation li a.selected {
+  color: purple;
+}
+.page-transition .fade-enter {
+  -webkit-transform: translate(100%);
+          transform: translate(100%);
+  opacity: 0;
+}
+.page-transition .fade-enter.fade-enter-active {
+  -webkit-transition: opacity 500ms, -webkit-transform 500ms;
+  transition: opacity 500ms, -webkit-transform 500ms;
+  transition: opacity 500ms, transform 500ms;
+  transition: opacity 500ms, transform 500ms, -webkit-transform 500ms;
+  -webkit-transform: translate(0%);
+          transform: translate(0%);
+  opacity: 1;
+}
+.page-transition .fade-exit {
+  opacity: 1;
+}
+.page-transition .fade-exit.fade-exit-active {
+  -webkit-transition: opacity 500ms, -webkit-transform 500ms;
+  transition: opacity 500ms, -webkit-transform 500ms;
+  transition: opacity 500ms, transform 500ms;
+  transition: opacity 500ms, transform 500ms, -webkit-transform 500ms;
+  opacity: 0;
+  -webkit-transform: translate(-100%);
+          transform: translate(-100%);
+}
+.home-page {
+  font-family: "Mukta", sans-serif;
+  font-size: 22px;
+  background: blue;
+}

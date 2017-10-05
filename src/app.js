@@ -7,15 +7,16 @@ import fonts from './font.css';
 import {
   BrowserRouter as Router,
   Route,
-  NavLink
+  NavLink, Switch, withRouter
 } from 'react-router-dom'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 import HomePage from "./components/home-page.js";
 
 class App extends React.Component {
   constructor() {
     super()
-    // runce once on app launch
+    // run once on app launch
     this.basename = window.location.pathname
   }
   render () {
@@ -27,15 +28,36 @@ class App extends React.Component {
             <li><NavLink activeClassName="selected" to="/example1">example1</NavLink></li>
             <li><NavLink activeClassName="selected" to="/example2">example2</NavLink></li>
           </ul>
-          <Route exact path="/" component={HomePage}/>
-          <Route path="/example1" component={example1}/>
-          <Route path="/example2" component={example2}/>
+          <AnimatedRouter />
         </div>
   		</Router>
     );
   }
 }
 
+class AnimatedRouter extends React.Component {
+  render () {
+    let {location} = this.props;
+    return (
+      <div className='page-transition'>
+        <TransitionGroup>
+          <CSSTransition
+            key={location.key}
+            timeout={500}
+            classNames="fade">
+            <Switch location={location}>
+              <Route exact path="/" component={HomePage}/>
+              <Route path="/example1" component={example1}/>
+              <Route path="/example2" component={example2}/>
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
+      </div>
+    );
+  }
+}
+
+AnimatedRouter = withRouter(AnimatedRouter)
 const example1 = () => <div>example1</div>
 const example2 = () => <div>example2</div>
 
