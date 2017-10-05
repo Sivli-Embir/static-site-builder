@@ -15,7 +15,7 @@ import HomePage from "./components/home-page.js";
 class App extends React.Component {
   render () {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
