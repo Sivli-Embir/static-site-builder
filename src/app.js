@@ -13,10 +13,14 @@ import {
 import HomePage from "./components/home-page.js";
 
 class App extends React.Component {
+  constructor() {
+    super()
+    // runce once on app launch
+    this.basename = window.location.pathname
+  }
   render () {
-    let basename = process.env.NODE_ENV == 'production' ? 'static-site-builder/' : ''
     return (
-      <Router basename={basename}>
+      <Router basename={this.basename}>
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
