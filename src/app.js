@@ -14,8 +14,9 @@ import HomePage from "./components/home-page.js";
 
 class App extends React.Component {
   render () {
+    let basename = process.env.NODE_ENV == 'production' ? 'static-site-builder/' : ''
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={basename}>
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
