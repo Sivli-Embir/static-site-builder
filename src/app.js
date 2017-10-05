@@ -7,7 +7,7 @@ import fonts from './font.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  NavLink
 } from 'react-router-dom'
 
 import HomePage from "./components/home-page.js";
@@ -22,14 +22,14 @@ class App extends React.Component {
     return (
       <Router basename={this.basename}>
         <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/example1">example1</Link></li>
-            <li><Link to="/example2">example2</Link></li>
+          <ul className='navigation'>
+            <li><NavLink exact activeClassName="selected" to="/">Home</NavLink></li>
+            <li><NavLink activeClassName="selected" to="/example1">example1</NavLink></li>
+            <li><NavLink activeClassName="selected" to="/example2">example2</NavLink></li>
           </ul>
           <Route exact path="/" component={HomePage}/>
-          <Route exact path="/example1" component={example1}/>
-          <Route exact path="/example2" component={example2}/>
+          <Route path="/example1" component={example1}/>
+          <Route path="/example2" component={example2}/>
         </div>
   		</Router>
     );

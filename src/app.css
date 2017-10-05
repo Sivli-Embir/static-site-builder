@@ -2,4 +2,5 @@
 @import "shared/colors.css";
 @import "shared/typography.css";
 /* Components */
+@import "components/layout.css";
 @import "components/home-page.css";

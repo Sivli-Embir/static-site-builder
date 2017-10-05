@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.navigation {
+  display: flex;
+  margin: 0;
+  & li {
+    flex: 1;
+    & a {
+      color: silver;
+      &.selected {
+        color: purple;
+      }
+    }
+  }
+}
