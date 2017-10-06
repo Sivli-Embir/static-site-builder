@@ -31,8 +31,12 @@ module.exports = {
         }),
       },
       {
-        test: /\.(ttf|woff|woff2)$/,
+        test: /\.(ttf|woff|woff2|svg)$/,
         use: ['url-loader'],
+      },
+      {
+        test: /\.(svg)$/,
+        use: ['svg-url-loader'],
       },
       {
         test: /\.js$/,

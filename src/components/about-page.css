@@ -1,6 +1,6 @@
-.home-page {
+.about-page {
   font-family: var(--font-text);
   font-size: 22px;
-  background: blue;
+  background: red;
   height: 100%;
 }

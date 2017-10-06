@@ -3,4 +3,6 @@
 @import "shared/typography.css";
 /* Components */
 @import "components/layout.css";
+@import "components/navigation.css";
 @import "components/home-page.css";
+@import "components/about-page.css";

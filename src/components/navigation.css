@@ -1,47 +1,3 @@
-/* Shared */
-/* Components */
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-html, body, #app, div[data-reactroot], .nav-wrapper {
-  margin: 0;
-  padding: 0;
-  background: rgb(0, 0, 0);
-  height: 100%;
-}
-.page-transition {
-  height: 100%
-}
-.page-transition .transition-group {
-  height: 100%;
-  position: relative;
-}
-.page-transition .fade-enter {
-  position: absolute;
-  z-index: 102;
-  left: 0;
-  right: 0;
-  -webkit-transform: translate(0, 100%);
-          transform: translate(0, 100%);
-}
-.page-transition .fade-enter.fade-enter-active {
-  -webkit-transition: -webkit-transform ease-in 0.5s;
-  transition: -webkit-transform ease-in 0.5s;
-  transition: transform ease-in 0.5s;
-  transition: transform ease-in 0.5s, -webkit-transform ease-in 0.5s;
-  -webkit-transform: translate(0, 0%);
-          transform: translate(0, 0%);
-}
-.page-transition .fade-exit {
-  position: absolute;
-  z-index: 101;
-  left: 0;
-  right: 0;
-}
-.page-transition .fade-exit.fade-exit-active {/* transition: transform ease-out 1s;
-    transform: translate(0, 100%); */
-}
 .container {
   background: #eff0f1;
   width: 100%;
@@ -57,12 +13,14 @@ html, body, #app, div[data-reactroot], .nav-wrapper {
   padding: 2em;
   position: relative;
 }
+
 .container.nav-open {
   margin-top: 8em;
   width: 90%;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
 /*
   menu icon css3
 */
@@ -79,6 +37,7 @@ html, body, #app, div[data-reactroot], .nav-wrapper {
 .menu-icon:hover span:before, .menu-icon:hover span:after {
   background: #222;
 }
+
 .menu-icon > span {
   position: absolute;
   top: 50%;
@@ -93,6 +52,7 @@ html, body, #app, div[data-reactroot], .nav-wrapper {
   transition: transform 0.3s, background 0.25s ease;
   transition: transform 0.3s, background 0.25s ease, -webkit-transform 0.3s;
 }
+
 .menu-icon > span:before,
 .menu-icon > span:after {
   content: "";
@@ -107,27 +67,33 @@ html, body, #app, div[data-reactroot], .nav-wrapper {
   transition: transform 0.3s, background 0.25s ease;
   transition: transform 0.3s, background 0.25s ease, -webkit-transform 0.3s;
 }
+
 .menu-icon > span:before {
   -webkit-transform: translateY(-0.75em);
   transform: translateY(-0.75em);
 }
+
 .menu-icon > span:after {
   -webkit-transform: translateY(0.75em);
   transform: translateY(0.75em);
 }
+
 /* OPENED */
 .menu-icon.open {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
 .menu-icon.open > span:before {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
 .menu-icon.open > span:after {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
 nav {
   position: fixed;
   top: 0;
@@ -144,16 +110,16 @@ nav ul li {
   margin: 1em 2em;
   cursor: pointer;
   position: relative;
-  top: -8em
-}
-nav ul li a {
-  text-decoration: none;
-  color: silver;
-}
-nav ul li a.active {
-  color: purple;
-  pointer-events: none;
-  cursor: not-allowed;
+  top: -8em;
+  & a {
+    text-decoration: none;
+    color: var(--color-silver);
+    &.active {
+      color: var(--color-purple);
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
 }
 nav ul li:nth-child(1) {
   -moz-transition: top 0.3s ease 0.15s;
@@ -211,16 +177,4 @@ nav ul li i {
 }
 nav ul li h4 {
   line-height: 2.5;
-}
-.home-page {
-  font-family: "Mukta", sans-serif;
-  font-size: 22px;
-  background: blue;
-  height: 100%;
-}
-.about-page {
-  font-family: "Mukta", sans-serif;
-  font-size: 22px;
-  background: red;
-  height: 100%;
 }
