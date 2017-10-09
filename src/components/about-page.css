@@ -1,6 +1,7 @@
 .about-page {
+  flex: 1;
   font-family: var(--font-text);
   font-size: 22px;
-  background: red;
+  background: var(--color-background);
   height: 100%;
 }

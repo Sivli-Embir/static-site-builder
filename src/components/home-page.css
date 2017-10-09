@@ -1,6 +1,7 @@
 .home-page {
+  flex: 1;
   font-family: var(--font-text);
   font-size: 22px;
-  background: blue;
+  background: var(--color-background);
   height: 100%;
 }

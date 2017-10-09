@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "webpack --progress --colors --watch",
+    "serve": "cd docs && python -m SimpleHTTPServer 3000",
     "build": "webpack -p --progress --colors --optimize-minimize"
   },
   "devDependencies": {

@@ -1,5 +1,12 @@
 :root {
-  --color-black:  rgb(0,0,0);
-  --color-silver: silver;
-  --color-purple: purple;
+  --color-black:  black;
+  --color-gray:  rgb(32,32,32);
+  --color-white:  white;
+  --color-silver: #d4d4d4;
+  --color-purple-dark: #800cbd;
+  --color-purple: #8f54c6;
+  --color-purple-light: #c1a1f6;
+
+  --color-background: var(--color-silver);
+  --color-background-accent: var(--color-purple-dark);
 }

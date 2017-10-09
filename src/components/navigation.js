@@ -1,5 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter, Route, Switch } from 'react-router-dom'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
+
+import HomePage from "./home-page.js";
+import AboutPage from "./about-page.js";
 
 
 export default class Navigation extends React.Component {
@@ -14,19 +18,40 @@ export default class Navigation extends React.Component {
         <nav>
           <ul>
             <li className={isOpen ? 'animate' : ''} >
-              <NavLink onClick={this.navClick()} exact to='/' activeClassName='active' ><h1>HOME</h1></NavLink>
+              <NavLink onClick={this.navClick()} exact to='/' activeClassName='active' >
+                <i className="fa fa-home" aria-hidden="true"></i>
+                <span>HOME</span>
+              </NavLink>
             </li>
             <li className={isOpen ? 'animate' : ''} >
-              <NavLink onClick={this.navClick()} to='/about' activeClassName='active'><h1>About</h1></NavLink>
+              <NavLink onClick={this.navClick()} to='/about' activeClassName='active'>
+              <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <span>About</span>
+              </NavLink>
             </li>
-            <li className={isOpen ? 'animate' : ''}>
-              <NavLink onClick={this.navClick()} to='/example2' activeClassName='active'><h1>Example 2</h1></NavLink>
+            <li className={isOpen ? 'animate' : ''} >
+              <NavLink onClick={this.navClick()} to='/about' activeClassName='active'>
+              <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <span>About</span>
+              </NavLink>
+            </li>
+            <li className={isOpen ? 'animate' : ''} >
+              <NavLink onClick={this.navClick()} to='/about' activeClassName='active'>
+              <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <span>About</span>
+              </NavLink>
+            </li>
+            <li className={isOpen ? 'animate' : ''} >
+              <NavLink onClick={this.navClick()} to='/about' activeClassName='active'>
+              <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <span>About</span>
+              </NavLink>
             </li>
           </ul>
         </nav>
         <div className={`container ${isOpen ? 'nav-open': ''}`}>
           <div className={`menu-icon ${isOpen ? 'open': ''}`} onClick={() => this.setState({open: !isOpen})}><span></span></div>
-          {this.props.children}
+          <AnimatedRouter />
         </div>
       </div>
     )
@@ -39,3 +64,29 @@ export default class Navigation extends React.Component {
     }
   }
 }
+
+
+class AnimatedRouter extends React.Component {
+  render () {
+    let {location} = this.props;
+    return (
+      <div className='page-transition'>
+        <TransitionGroup className='transition-group'>
+          <CSSTransition
+            key={location.key}
+            timeout={500}
+            classNames="fade">
+            <Switch location={location}>
+              <Route exact path="/" component={HomePage}/>
+              <Route path="/about" component={AboutPage}/>
+              <Route path="/example2" component={example2}/>
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
+      </div>
+    );
+  }
+}
+
+AnimatedRouter = withRouter(AnimatedRouter)
+const example2 = () => <div>example2</div>

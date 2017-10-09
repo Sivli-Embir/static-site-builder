@@ -2,4 +2,5 @@
   --font-text: "Mukta", sans-serif;
   --font-weight: 300;
   --line-height: 1.5;
+  @custom-media --small-viewport (max-width: 40em);
 }

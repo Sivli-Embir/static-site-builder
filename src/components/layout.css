@@ -1,18 +1,27 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-html, body, #app, div[data-reactroot], .nav-wrapper {
+html, body {
   margin: 0;
   padding: 0;
-  background: var(--color-black);
-  height: 100%;
+  background: var(--color-gray);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  &, &:before, &:after {
+    box-sizing: border-box;
+  }
 }
 
+#app, div[data-reactroot], .nav-wrapper, .container, .page-transition, .transition-group {
+  display: flex;
+  flex: 1;
+  z-index: 10;
+  &, &:before, &:after {
+    box-sizing: border-box;
+  }
+}
+
+
 .page-transition {
-  height: 100%;
   & .transition-group {
-    height: 100%;
     position: relative;
   }
   & .fade-enter {
@@ -20,11 +29,13 @@ html, body, #app, div[data-reactroot], .nav-wrapper {
     z-index: 102;
     left: 0;
     right: 0;
+    opacity: 0.5;
     transform: translate(0, 100%);
   }
 
   & .fade-enter.fade-enter-active {
-    transition: transform ease-in 0.5s;
+    transition: transform ease-in 0.5s, opacity 0.5s;
+    opacity: 1;
     transform: translate(0, 0%);
   }
 
@@ -33,10 +44,71 @@ html, body, #app, div[data-reactroot], .nav-wrapper {
     z-index: 101;
     left: 0;
     right: 0;
+    transition: opacity 0.5s;
+    opacity: 1;
   }
 
   & .fade-exit.fade-exit-active {
-    /*transition: transform ease-out 1s;
-    transform: translate(0, 100%);*/
+    opacity: 0.5;
+  }
+}
+
+
+.container {
+  background: var(--color-background);
+  flex-direction: column;
+  flex: 1;
+  transition: all 0.3s ease 0.6s;
+  position: relative;
+  &.nav-open {
+    margin-top: 5rem;
+    width: 90%;
+    transition: all 0.3s ease;
+  }
+  & .menu-icon {
+    position: relative;
+    display: block;
+    width: 2.5em;
+    height: 2.5em;
+    cursor: pointer;
+    & span {
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 100%;
+      height: 0.25em;
+      background-color: var(--color-background-accent);
+      border-radius: 3px;
+      transition: transform 0.3s, background 0.25s ease;
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-background-accent);
+        border-radius: 3px;
+        transition: transform 0.3s, background 0.25s ease;
+      }
+      &:before {
+        transform: translateY(-0.75em);
+      }
+      &:after {
+        transform: translateY(0.75em);
+      }
+
+    }
+    &:hover {
+      & span, & span:before, & span:after {
+        background: color(var(--color-background-accent) lightness(60%));
+      }
+    }
+    &.open {
+      transform: rotate(45deg);
+      & span {
+        &:before, &:after {
+          transform: rotate(90deg);
+        }
+      }
+    }
   }
 }
