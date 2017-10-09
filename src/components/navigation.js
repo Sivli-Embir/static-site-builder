@@ -50,7 +50,9 @@ export default class Navigation extends React.Component {
           </ul>
         </nav>
         <div className={`container ${isOpen ? 'nav-open': ''}`}>
-          <div className={`menu-icon ${isOpen ? 'open': ''}`} onClick={() => this.setState({open: !isOpen})}><span></span></div>
+          <div className="menu-icon" onClick={() => this.setState({open: !isOpen})}>
+            <div className={`wrapper ${isOpen ? 'open': ''}`}><span></span></div>
+          </div>
           <AnimatedRouter />
         </div>
       </div>
